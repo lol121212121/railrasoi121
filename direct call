@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Rail Rasoi - Train Mein Taza & Saaf Khana</title>
+  <style>
+    :root {
+      --primary: #ff4757;
+      --primary-dark: #e84118;
+      --accent: #ffa502;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text-dark: #0f172a;
+      --text-muted: #64748b;
+      --green: #25d366;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-dark);
+      padding-bottom: 110px;
+    }
+
+    /* Top Glass Header */
+    header {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 18px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
+    }
+
+    .brand-text h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.1;
+    }
+
+    .brand-text p {
+      font-size: 0.72rem;
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: #fef2f2;
+      border: 1px solid #fee2e2;
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #1e272e, #2f3542);
+      color: white;
+      padding: 24px 18px;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #ffda79;
+    }
+
+    .hero h2 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+
+    .hero p {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    .card-header {
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-header h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    /* Menu Items */
+    .menu-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+
+    .menu-card:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .food-tag {
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .veg { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .special { background: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
+
+    .food-info h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .food-info p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .food-price {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: 4px;
+    }
+
+    /* Process Steps */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .step-box {
+      background: #f8fafc;
+      padding: 12px 8px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .step-icon {
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    .step-box p {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* Bottom Floating Action Bar */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid #e2e8f0;
+      padding: 12px 16px;
+      box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.08);
+      z-index: 200;
+    }
+
+    .bar-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: white;
+      text-decoration: none;
+      width: 100%;
+      padding: 16px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 15px 0 5px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-icon">🚅</div>
+      <div class="brand-text">
+        <h1>Rail Rasoi</h1>
+        <p>Express Seat Dining</p>
+      </div>
+    </div>
+    <div class="badge">★ 4.9 Rated</div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <span class="hero-tag">✨ 100% Taza & Hygienic Packaged</span>
+    <h2>Train Safar Mein Ab Manta Khana!</h2>
+    <p>Aapki seat par direct hot & fresh delivery. Order directly on WhatsApp!</p>
+  </section>
+
+  <div class="container">
+    
+    <!-- Step Details -->
+    <div class="card">
+      <div class="card-header">
+        <span>⚡</span>
+        <h3>Kaise Order Karein? (Simple 3 Steps)</h3>
+      </div>
+      <div class="steps-grid">
+        <div class="step-box">
+          <div class="step-icon">📲</div>
+          <p>1. Tap Order Button</p>
+        </div>
+        <div class="step-box">
+          <div class="step-icon">💬</div>
+          <p>2. Send WhatsApp</p>
+        </div>
+        <div class="step-box">
+          <div class="step-icon">🍱</div>
+          <p>3. Seat Par Delivery</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Section -->
+    <div class="card">
+      <div class="card-header">
+        <span>🍱</span>
+        <h3>Swadist Menu & Rates</h3>
+      </div>
+
+      <div class="menu-card">
+        <div class="food-info">
+          <span class="food-tag veg">PURE VEG</span>
+          <h4>Deluxe Veg Thali</h4>
+          <p>4 Butter Roti, Paneer Masala, Dal Tadka, Jeera Rice, Sweets & Salad</p>
+          <div class="food-price">₹130</div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="food-info">
+          <span class="food-tag special">NO ONION GARLIC</span>
+          <h4>Shuddh Jain Thali</h4>
+          <p>Jain Special Sabzi, Dal, 4 Plain Roti, Basmati Rice & Salad</p>
+          <div class="food-price">₹140</div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="food-info">
+          <span class="food-tag veg">HOT SNACK</span>
+          <h4>Special Chole Bhature</h4>
+          <p>2 Fluffy Bhature, Spicy Amritsari Chole & Pickle</p>
+          <div class="food-price">₹99</div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="food-info">
+          <span class="food-tag veg">BEVERAGE</span>
+          <h4>Chilled Mineral Water (1L)</h4>
+          <p>Sealed Fresh Packaged Drinking Water</p>
+          <div class="food-price">₹20</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-note">
+      🔒 Safe & Clean Delivery • Pay Cash or UPI On Delivery
+    </div>
+
+  </div>
+
+  <!-- Bottom Action Bar -->
+  <div class="bottom-bar">
+    <div class="bar-wrapper">
+      <a href="#" id="orderBtn" class="btn-whatsapp">
+        <span>Click To Order On WhatsApp</span> 📱
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // ⚠️ CRITICAL: YAHAN APNA 10-DIGIT WHATSAPP NUMBER DAALNA HAI (AAGE 91 LAGA KAR)
+    const MY_WHATSAPP_NUMBER = "9198765"; // <-- Replace with your real number
+
+    const defaultMsg = encodeURIComponent("Hi Rail Rasoi, mujhe train mein khana order karna hai. Kripya details lene ke liye mujhe call/message karein.");
+    
+    document.getElementById('orderBtn').href = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${defaultMsg}`;
+  </script>
+</body>
+</html>
