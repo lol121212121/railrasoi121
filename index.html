@@ -2,43 +2,45 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rail Rasoi - Train Mein Taza & Saaf Khana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Rail Rasoi - Premium On-Seat Train Dining</title>
   <style>
     :root {
-      --primary: #d97706;
-      --primary-dark: #b45309;
-      --bg: #f8fafc;
+      --primary: #ff4757;
+      --primary-dark: #e84118;
+      --accent: #ffa502;
+      --bg: #f1f2f6;
       --surface: #ffffff;
-      --text: #0f172a;
-      --text-light: #64748b;
-      --border: #e2e8f0;
-      --green: #16a34a;
+      --text-dark: #2f3542;
+      --text-muted: #747d8c;
+      --green: #2ed573;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
       background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      padding-bottom: 90px;
+      color: var(--text-dark);
+      padding-bottom: 110px;
     }
 
-    /* Header */
+    /* Top Navigation Header */
     header {
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      color: white;
-      padding: 1rem 1.25rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 12px 18px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -50,97 +52,159 @@
       gap: 10px;
     }
 
-    .brand-logo {
-      background: var(--primary);
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+    .brand-icon {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
     }
 
-    .brand-title h1 {
-      font-size: 1.2rem;
+    .brand-text h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.1;
+    }
+
+    .brand-text p {
+      font-size: 0.7rem;
+      color: var(--primary);
       font-weight: 700;
+      text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
-    .brand-title p {
-      font-size: 0.72rem;
-      color: #94a3b8;
-    }
-
-    .badge {
-      background: rgba(22, 163, 74, 0.2);
-      color: #4ade80;
-      border: 1px solid rgba(74, 222, 128, 0.3);
-      padding: 4px 10px;
+    .rating-badge {
+      background: #fef2f2;
+      border: 1px solid #fee2e2;
+      color: var(--primary);
+      padding: 6px 12px;
       border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     /* Hero Banner */
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80') center/cover;
+      background: linear-gradient(135deg, #1e272e, #2f3542);
       color: white;
-      padding: 2rem 1.25rem;
-      text-align: center;
+      padding: 24px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #ffda79;
     }
 
     .hero h2 {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-      color: #fef08a;
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 8px;
     }
 
     .hero p {
-      font-size: 0.88rem;
-      max-width: 500px;
-      margin: 0 auto;
-      opacity: 0.9;
+      font-size: 0.85rem;
+      color: #a4b0be;
     }
 
-    /* Container */
+    /* Trust Highlights Row */
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .trust-item {
+      text-align: center;
+    }
+
+    .trust-item span {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 2px;
+    }
+
+    .trust-item p {
+      font-size: 0.68rem;
+      color: #dcdde1;
+      font-weight: 600;
+    }
+
+    /* Main Container */
     .container {
       max-width: 600px;
       margin: 0 auto;
-      padding: 1.25rem;
+      padding: 16px;
     }
 
+    /* Cards */
     .card {
       background: var(--surface);
-      border-radius: 16px;
-      padding: 1.25rem;
-      margin-bottom: 1.25rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.03);
     }
 
-    .card-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+    .card-header {
       display: flex;
       align-items: center;
-      gap: 8px;
-      color: var(--text);
-      border-bottom: 2px solid #f1f5f9;
-      padding-bottom: 0.5rem;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f1f2f6;
     }
 
-    /* Forms */
+    .card-header .icon {
+      font-size: 1.2rem;
+    }
+
+    .card-header h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* Form Fields */
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
     }
 
     .form-group {
-      margin-bottom: 0.85rem;
+      display: flex;
+      flex-direction: column;
     }
 
     .form-group.full {
@@ -148,277 +212,365 @@
     }
 
     label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    input, select {
+    input {
       width: 100%;
-      padding: 10px 12px;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.9rem;
+      padding: 12px 14px;
+      border: 1.5px solid #eccc68;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      background: #fafafa;
+      transition: all 0.2s ease;
       outline: none;
-      transition: all 0.2s;
     }
 
-    input:focus, select:focus {
+    input:focus {
+      background: #ffffff;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+      box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.15);
     }
 
-    /* Food Menu Items */
-    .menu-item {
+    /* Menu Items */
+    .menu-card {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px dashed var(--border);
+      padding: 14px 0;
+      border-bottom: 1px solid #f1f2f6;
     }
 
-    .menu-item:last-child {
+    .menu-card:last-child {
       border-bottom: none;
+      padding-bottom: 0;
     }
 
-    .item-info h4 {
-      font-size: 0.95rem;
-      font-weight: 600;
+    .food-tag {
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 4px;
     }
 
-    .item-info p {
-      font-size: 0.78rem;
-      color: var(--text-light);
-    }
+    .veg { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+    .special { background: #fff8e1; color: #f57f17; border: 1px solid #ffe082; }
 
-    .item-price {
+    .food-info h4 {
+      font-size: 0.98rem;
       font-weight: 700;
-      color: var(--primary-dark);
-      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .food-info p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
       margin-top: 2px;
     }
 
-    .qty-controls {
+    .food-price {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-top: 4px;
+    }
+
+    /* Quantity Counter */
+    .add-counter {
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: #f1f5f9;
-      padding: 4px 8px;
+      background: #f1f2f6;
+      border-radius: 10px;
+      padding: 4px;
+      border: 1px solid #dfe4ea;
+    }
+
+    .counter-btn {
+      width: 32px;
+      height: 32px;
       border-radius: 8px;
-    }
-
-    .qty-btn {
       background: white;
-      border: 1px solid var(--border);
-      width: 26px;
-      height: 26px;
-      border-radius: 6px;
+      border: none;
+      font-size: 1.1rem;
       font-weight: bold;
+      color: var(--text-dark);
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: all 0.1s active;
     }
 
-    .qty-count {
-      font-weight: 700;
-      font-size: 0.9rem;
-      min-width: 18px;
+    .counter-btn:active {
+      transform: scale(0.92);
+    }
+
+    .counter-value {
+      width: 28px;
       text-align: center;
+      font-weight: 800;
+      font-size: 0.95rem;
     }
 
-    /* Bottom Sticky Bar */
+    /* Bottom Sticky Action Bar */
     .bottom-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 12px 1.25rem;
-      box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid #e1e2e6;
+      padding: 12px 16px;
+      box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.08);
+      z-index: 200;
+    }
+
+    .bar-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 600px;
-      margin: 0 auto;
-      z-index: 99;
     }
 
-    .total-price {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--text);
+    .bill-summary {
+      display: flex;
+      flex-direction: column;
     }
 
-    .total-price span {
+    .bill-items {
       font-size: 0.75rem;
-      color: var(--text-light);
-      display: block;
-      font-weight: normal;
+      color: var(--text-muted);
+      font-weight: 600;
     }
 
-    .btn-order {
-      background: #25d366;
+    .bill-total {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--text-dark);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25d366, #128c7e);
       color: white;
       border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-weight: 700;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 800;
       font-size: 0.95rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+      transition: transform 0.2s;
     }
 
-    .btn-order:hover {
-      background: #1eb956;
+    .btn-whatsapp:active {
+      transform: scale(0.96);
+    }
+
+    /* Footer Note */
+    .footer-note {
+      text-align: center;
+      padding: 20px 0 10px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Top Glass Header -->
   <header>
     <div class="brand">
-      <div class="brand-logo">🚂</div>
-      <div class="brand-title">
+      <div class="brand-icon">🚅</div>
+      <div class="brand-text">
         <h1>Rail Rasoi</h1>
-        <p>100% Shuddh & Taza Khana</p>
+        <p>Express Seat Dining</p>
       </div>
     </div>
-    <div class="badge">Seat Delivery</div>
+    <div class="rating-badge">
+      ★ 4.9 <span style="color:#a4b0be; font-weight:normal;">(2k+ Orders)</span>
+    </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Banner -->
   <section class="hero">
-    <h2>Train Mein Taza Khana Mangwayein</h2>
-    <p>Ghar jaisa saaf aur swadist khana direct aapke Seat/Coach par deliver hoga.</p>
+    <div class="hero-content">
+      <span class="hero-tag">✨ 100% Fresh & Hygienic Guarantee</span>
+      <h2>Train Safar Mein Ab Manta Taza Khana!</h2>
+      <p>Aapki seat par direct hot & fresh delivery, zero waiting time ke saath.</p>
+      
+      <div class="trust-row">
+        <div class="trust-item">
+          <span>🧼</span>
+          <p>Hygiene Packed</p>
+        </div>
+        <div class="trust-item">
+          <span>⚡</span>
+          <p>On-Seat Delivery</p>
+        </div>
+        <div class="trust-item">
+          <span>💵</span>
+          <p>Pay On Delivery</p>
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- Main Content Form -->
   <div class="container">
     
-    <!-- Step 1: Yatri Details Form -->
+    <!-- Step 1: Journey Details -->
     <div class="card">
-      <div class="card-title">📍 Yatri Ki Details (Journey Info)</div>
+      <div class="card-header">
+        <span class="icon">📍</span>
+        <h3>Yatri Ki Jankari (Journey Details)</h3>
+      </div>
+
       <div class="form-grid">
         <div class="form-group full">
-          <label>Aapka Naam</label>
-          <input type="text" id="custName" placeholder="Jaise: Rahul Sharma" />
+          <label>Yatri Ka Naam (Full Name)</label>
+          <input type="text" id="custName" placeholder="E.g. Rahul Sharma" />
         </div>
+        
         <div class="form-group full">
-          <label>WhatsApp / Mobile No.</label>
-          <input type="tel" id="custPhone" placeholder="9876543210" />
+          <label>Mobile / WhatsApp Number</label>
+          <input type="tel" id="custPhone" placeholder="10 Digit Number" />
         </div>
+
         <div class="form-group">
-          <label>Train No. / Naam</label>
-          <input type="text" id="trainNo" placeholder="12951 Express" />
+          <label>Train No. / Name</label>
+          <input type="text" id="trainNo" placeholder="E.g. 12951 Express" />
         </div>
+
         <div class="form-group">
-          <label>PNR Number</label>
+          <label>PNR No. (Optional)</label>
           <input type="number" id="pnrNo" placeholder="10 Digits" />
         </div>
+
         <div class="form-group">
           <label>Coach & Seat No.</label>
-          <input type="text" id="seatNo" placeholder="B2 - 45" />
+          <input type="text" id="seatNo" placeholder="E.g. B2 - 45" />
         </div>
+
         <div class="form-group">
           <label>Delivery Station</label>
-          <input type="text" id="station" placeholder="Nagpur Jn" />
+          <input type="text" id="station" placeholder="E.g. Nagpur Jn" />
         </div>
       </div>
     </div>
 
-    <!-- Step 2: Menu Selection -->
+    <!-- Step 2: Food Menu -->
     <div class="card">
-      <div class="card-title">🍲 Khana Select Karein</div>
-      
-      <div class="menu-item">
-        <div class="item-info">
-          <h4>Shuddh Veg Thali</h4>
-          <p>4 Roti, Paneer Sabzi, Dal Fry, Chawal, Salad</p>
-          <div class="item-price">₹120</div>
+      <div class="card-header">
+        <span class="icon">🍱</span>
+        <h3>Menu (Taza & Swadist Khana)</h3>
+      </div>
+
+      <!-- Item 1 -->
+      <div class="menu-card">
+        <div class="food-info">
+          <span class="food-tag veg">PURE VEG</span>
+          <h4>Deluxe Veg Thali</h4>
+          <p>4 Butter Roti, Paneer Masala, Dal Tadka, Jeera Rice, Sweets & Salad</p>
+          <div class="food-price">₹130</div>
         </div>
-        <div class="qty-controls">
-          <button class="qty-btn" onclick="updateQty('vegThali', -1)">-</button>
-          <span class="qty-count" id="qty-vegThali">0</span>
-          <button class="qty-btn" onclick="updateQty('vegThali', 1)">+</button>
+        <div class="add-counter">
+          <button class="counter-btn" onclick="updateQty('vegThali', -1)">-</button>
+          <span class="counter-value" id="qty-vegThali">0</span>
+          <button class="counter-btn" onclick="updateQty('vegThali', 1)">+</button>
         </div>
       </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <h4>Special Jain Thali</h4>
-          <p>No Onion, No Garlic - Roti, Dal, Sabzi, Rice</p>
-          <div class="item-price">₹130</div>
+      <!-- Item 2 -->
+      <div class="menu-card">
+        <div class="food-info">
+          <span class="food-tag special">NO ONION GARLIC</span>
+          <h4>Shuddh Jain Thali</h4>
+          <p>Jain Special Sabzi, Dal, 4 Plain Roti, Basmati Rice & Salad</p>
+          <div class="food-price">₹140</div>
         </div>
-        <div class="qty-controls">
-          <button class="qty-btn" onclick="updateQty('jainThali', -1)">-</button>
-          <span class="qty-count" id="qty-jainThali">0</span>
-          <button class="qty-btn" onclick="updateQty('jainThali', 1)">+</button>
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <h4>Chole Bhature Combo</h4>
-          <p>2 Bhature + Special Chole + Achar</p>
-          <div class="item-price">₹90</div>
-        </div>
-        <div class="qty-controls">
-          <button class="qty-btn" onclick="updateQty('choleBhature', -1)">-</button>
-          <span class="qty-count" id="qty-choleBhature">0</span>
-          <button class="qty-btn" onclick="updateQty('choleBhature', 1)">+</button>
+        <div class="add-counter">
+          <button class="counter-btn" onclick="updateQty('jainThali', -1)">-</button>
+          <span class="counter-value" id="qty-jainThali">0</span>
+          <button class="counter-btn" onclick="updateQty('jainThali', 1)">+</button>
         </div>
       </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <h4>Mineral Water Bottle (1L)</h4>
-          <p>Chilled Bisleri / Kinley</p>
-          <div class="item-price">₹20</div>
+      <!-- Item 3 -->
+      <div class="menu-card">
+        <div class="food-info">
+          <span class="food-tag veg">HOT SNACK</span>
+          <h4>Special Chole Bhature</h4>
+          <p>2 Fluffy Bhature, Spicy Amritsari Chole & Pickle</p>
+          <div class="food-price">₹99</div>
         </div>
-        <div class="qty-controls">
-          <button class="qty-btn" onclick="updateQty('waterBottle', -1)">-</button>
-          <span class="qty-count" id="qty-waterBottle">0</span>
-          <button class="qty-btn" onclick="updateQty('waterBottle', 1)">+</button>
+        <div class="add-counter">
+          <button class="counter-btn" onclick="updateQty('choleBhature', -1)">-</button>
+          <span class="counter-value" id="qty-choleBhature">0</span>
+          <button class="counter-btn" onclick="updateQty('choleBhature', 1)">+</button>
         </div>
       </div>
 
+      <!-- Item 4 -->
+      <div class="menu-card">
+        <div class="food-info">
+          <span class="food-tag veg">BEVERAGE</span>
+          <h4>Chilled Mineral Water (1L)</h4>
+          <p>Sealed Fresh Packaged Drinking Water</p>
+          <div class="food-price">₹20</div>
+        </div>
+        <div class="add-counter">
+          <button class="counter-btn" onclick="updateQty('waterBottle', -1)">-</button>
+          <span class="counter-value" id="qty-waterBottle">0</span>
+          <button class="counter-btn" onclick="updateQty('waterBottle', 1)">+</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-note">
+      🔒 Safe & Secure Order • No Advance Payment Needed
     </div>
 
   </div>
 
-  <!-- Bottom Order Bar -->
+  <!-- Bottom Floating Bar -->
   <div class="bottom-bar">
-    <div class="total-price">
-      <span id="itemCount">0 Items selected</span>
-      ₹<span id="grandTotal">0</span>
+    <div class="bar-wrapper">
+      <div class="bill-summary">
+        <span class="bill-items" id="itemCount">0 Items added</span>
+        <div class="bill-total">₹<span id="grandTotal">0</span></div>
+      </div>
+      <button class="btn-whatsapp" onclick="sendOrder()">
+        <span>Confirm Order</span> 📱
+      </button>
     </div>
-    <button class="btn-order" onclick="sendOrder()">
-      Order On WhatsApp 📱
-    </button>
   </div>
 
   <script>
-    // Config: Apna WhatsApp Number Yahan Daalein (With 91 Country Code)
-    const MY_WHATSAPP_NUMBER = "919876543210"; 
+    // ⚠️ CRITICAL: YAHAN APNA 10-DIGIT NUMBER DAALNA HAI (AAGE 91 LAGA KAR)
+    const MY_WHATSAPP_NUMBER = "919028521796"; 
 
     const prices = {
-      vegThali: 120,
-      jainThali: 130,
-      choleBhature: 90,
+      vegThali: 130,
+      jainThali: 140,
+      choleBhature: 99,
       waterBottle: 20
     };
 
     const names = {
-      vegThali: "Shuddh Veg Thali",
-      jainThali: "Special Jain Thali",
-      choleBhature: "Chole Bhature Combo",
+      vegThali: "Deluxe Veg Thali",
+      jainThali: "Shuddh Jain Thali",
+      choleBhature: "Special Chole Bhature",
       waterBottle: "Mineral Water (1L)"
     };
 
@@ -445,7 +597,7 @@
         count += cart[item];
       }
       document.getElementById('grandTotal').innerText = total;
-      document.getElementById('itemCount').innerText = `${count} Items selected`;
+      document.getElementById('itemCount').innerText = `${count} Item${count === 1 ? '' : 's'} added`;
     }
 
     function sendOrder() {
@@ -457,7 +609,7 @@
       const station = document.getElementById('station').value.trim();
 
       if (!name || !phone || !train || !seat || !station) {
-        alert("Kripya saari jankari (Naam, Phone, Train, Seat, Station) dhang se bharein!");
+        alert("Kripya saari zaroori details (Naam, Phone, Train, Seat/Coach, Delivery Station) bharein!");
         return;
       }
 
@@ -471,22 +623,26 @@
       }
 
       if (orderList.length === 0) {
-        alert("Kripya kam se kam ek khana select karein!");
+        alert("Kripya kam se kam ek food item select karein!");
         return;
       }
 
-      // WhatsApp Message Formatting
-      let msg = `*🚂 NEW FOOD ORDER - RAIL RASOI*\n\n`;
-      msg += `*👤 Passenger Details:*\n`;
-      msg += `• Naam: ${name}\n`;
-      msg += `• Phone: ${phone}\n`;
-      msg += `• Train: ${train}\n`;
-      msg += `• PNR: ${pnr || 'N/A'}\n`;
-      msg += `• Seat/Coach: ${seat}\n`;
-      msg += `• Delivery Station: ${station}\n\n`;
-      msg += `*🍱 Items Ordered:*\n${orderList.join('\n')}\n\n`;
-      msg += `*💰 Total Amount:* ₹${total}\n`;
-      msg += `*💵 Payment:* Cash / UPI on Delivery`;
+      // Format professional WhatsApp invoice message
+      let msg = `*🍱 NEW TRAIN FOOD ORDER - RAIL RASOI*\n`;
+      msg += `----------------------------------------\n`;
+      msg += `*👤 PASSENGER DETAILS:*\n`;
+      msg += `• *Naam:* ${name}\n`;
+      msg += `• *Mobile:* ${phone}\n`;
+      msg += `• *Train:* ${train}\n`;
+      msg += `• *PNR:* ${pnr || 'Not Provided'}\n`;
+      msg += `• *Seat/Coach:* ${seat}\n`;
+      msg += `• *Station:* ${station}\n\n`;
+      msg += `*🛒 ORDER ITEMS:*\n${orderList.join('\n')}\n\n`;
+      msg += `----------------------------------------\n`;
+      msg += `*💰 TOTAL AMOUNT:* ₹${total}\n`;
+      msg += `*💵 PAYMENT:* Cash/UPI on Seat Delivery\n`;
+      msg += `----------------------------------------\n`;
+      msg += `_Order sent via Rail Rasoi Web App_`;
 
       const encodedMsg = encodeURIComponent(msg);
       window.open(`https://wa.me/${MY_WHATSAPP_NUMBER}?text=${encodedMsg}`, '_blank');
